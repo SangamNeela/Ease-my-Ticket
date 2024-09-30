@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Registration Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+    }
+
+    form {
+      background-color: #F7F7F7;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+      margin-top: 50px;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    input[type="tel"],
+    input[type="date"] {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      margin-bottom: 20px;
+      box-sizing: border-box;
+      font-size: 16px;
+    }
+
+    input[type="submit"] {
+      background-color: #393053;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #635985;
+    }
+  </style>
+<script>
+function validateForm() {
+    var firstName = document.forms["registration-form"]["first_name"].value;
+    var lastName = document.forms["registration-form"]["last_name"].value;
+    var email = document.forms["registration-form"]["email"].value;
+    var password = document.forms["registration-form"]["password"].value;
+    var confirmPassword = document.forms["registration-form"]["confirm-password"].value;
+    var phoneNumber = document.forms["registration-form"]["phone_number"].value;
+    var dateOfBirth = document.forms["registration-form"]["date_of_birth"].value;
+
+    var firstNameRegex = /^[a-zA-Z]{2,50}$/;
+    var lastNameRegex = /^[a-zA-Z]{2,50}$/;
+    var emailRegex = /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/;
+    var passwordRegex = /^[a-zA-Z0-9!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]{8,20}$/;
+    var phoneNumberRegex = /^\d{10}$/;
+
+    var errorMessage = "";
+
+    if (!firstName.match(firstNameRegex)) {
+        errorMessage += "First name must contain only letters and be between 2-50 characters long.\n";
+    }
+
+    if (!lastName.match(lastNameRegex)) {
+        errorMessage += "Last name must contain only letters and be between 2-50 characters long.\n";
+    }
+
+    if (!email.match(emailRegex)) {
+        errorMessage += "Invalid email address.\n";
+    }
+
+    if (!password.match(passwordRegex)) {
+        errorMessage += "Password must contain between 8-20 characters and have at least one uppercase letter, one lowercase letter, one number, and one special character.\n";
+    }
+
+    if (password !== confirmPassword) {
+        errorMessage += "Passwords do not match.\n";
+    }
+
+    if (!phoneNumber.match(phoneNumberRegex)) {
+        errorMessage += "Phone number must be 10 digits long.\n";
+    }
+
+    if (dateOfBirth === "") {
+        errorMessage += "Please select your date of birth.\n";
+    }
+
+    if (errorMessage !== "") {
+        alert(errorMessage);
+        return false;
+    }
+
+    return true;
+}
+
+
+</script>
+
+
+</head>
+
+<body>
+
+  <h1>Registration Form</h1>
+  <!-- FORM CREATION-->
+  <form action="connect.php" method="post" name="registration-form" onsubmit="return validateForm()" enctype="multipart/form-data">
+
+    <label for="first_name">First Name:</label>
+    <input type="text" id="first-name" name="first_name">
+
+    <label for="last_name">Last Name:</label>
+    <input type="text" id="last-name" name="last_name">
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email">
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password">
+
+    <label for="confirm-password">Confirm Password:</label>
+    <input type="password" id="confirm-password" name="confirm-password">
+
+    <label for="phone_number">Phone Number:</label>
+    <input type="tel" id="phone-number" name="phone_number">
+
+    <label for="date_of_birth">Date of Birth:</label>
+    <input type="date" id="date-of-birth" name="date_of_birth">
+
+    <label for="profile-img">Profile-Image:</label>
+    <input type="file" name="img-file" required><br><br>
+
+    <input type="submit" value="Submit">
+
+  </form>
+
+
+</body>
+
+</html>

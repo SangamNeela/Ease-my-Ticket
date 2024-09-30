@@ -1,0 +1,84 @@
+<?php
+include ("dbconn.php");
+$result1=mysqli_query($conn,"select ")
+$result2=mysqli_query($conn,"select balance from users;")
+?>
+<html>
+
+<head>
+  <title>MyWallet</title>
+  <!--   BOOTSTRAP CDN LINK -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+
+  <style>
+    .card {
+      background-color: #E5D1FA;
+    }
+
+    body {
+      background-color: #BDCDD6;
+    }
+  </style>
+
+</head>
+
+<body>
+  <div class="card  m-4 p-2 w-50 " style="height:19.7rem;">
+    <div class=" row">
+      <div class="col-lg-5"> <img src="wallet2-img.jpg" class="card-img-top" alt="ntg"></div>
+      <div class="card-body col-lg-4">
+        <h2 class="card-title" id="balance">0</h2>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+          content.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card  m-4 p-2  w-50 " style="height:19.7rem;">
+    <div class=" row">
+      <div class="col-lg-5 "> <img src="wallet2-img.jpg" class="card-img-top" alt="ntg"></div>
+
+      <div class="card-body col-lg-4">
+        <h3 class="card-title fs-2 shadow">TOP-UP WALLET</h3></br></br>
+        <p class="text-md-start fw-semibold">Enter your Top-Up Number</p>
+        <div class="input-group mb-3">
+          <form action="#" method="posinclude ("dbconn.php");
+          $result1=mysqli_query($conn,"select ")
+          $result2=mysqli_query($conn,"select balance from users;")t">
+            <input type="number" id="myNumber" class="form-control" placeholder="Enter Number"
+            aria-label="Recipient's username" aria-describedby="button- 
+              addon2">
+          <button class="btn btn-dark" type="submit" onclick="changeText()" id="button-addon2">Top-Up</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+<script>
+  function changeText() {
+    // Get the input element
+    var inputElement = document.getElementById("myNumber").value;
+
+    // Get the h2 element
+    var h2Element = document.getElementById("balance");
+    var num=parseInt(h2Element.textContent);
+    
+    if(num===0){
+      h2Element.textContent = `${inputElement}`;
+    }
+    else{
+      var num2=parseInt(h2Element.textContent);
+      var num3=parseInt(inputElement);
+      var sum=num2+num3;
+      var result=sum.toString();
+      h2Element.textContent=`${result}`;
+
+    }
+
+  }
+</script>
+
+</html>
